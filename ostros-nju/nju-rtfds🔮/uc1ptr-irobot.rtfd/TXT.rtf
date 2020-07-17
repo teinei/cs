@@ -1,0 +1,374 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\fswiss\fcharset0 ArialMT;\f2\fswiss\fcharset0 Helvetica;
+\f3\froman\fcharset0 Times-Roman;\f4\froman\fcharset0 TimesNewRomanPSMT;\f5\fnil\fcharset0 STIXGeneral-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red24\green24\blue24;\red255\green255\blue255;
+\red98\green98\blue98;\red24\green24\blue24;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c12157\c12157\c12157;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c45882\c45882\c45882;\cssrgb\c12157\c12157\c12157;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12080\viewh14780\viewkind0
+\deftab720
+\pard\pardeftab720\sl500\sa240\partightenfactor0
+
+\f0\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+Programming Assignment: I, Robot\
+\pard\pardeftab720\sl280\sa192\partightenfactor0
+
+\fs30 \cf2 Assignment Description
+\f1\b0   \
+In this assignment, you'll be writing a program that does 2 things:  calculate velocity vectors and durations for an industrial robot to move its welding attachment between a set of weld points and calculating how long the entire set of movements will take.\
+
+\f0\b Structs and Functions
+\f1\b0 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic Screen Shot 2020-07-15 at 11.46.21 AM.png \width8440 \height2120 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa192\partightenfactor0
+\cf2 The function prototypes for the functions you could use to implement your  solution are provided below. You don\'92t have to implement your solution  using these functions, and you can certainly add more functions if you  want to; these are just the prototypes for the functions I implemented  in my solution.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.06.15 PM.png \width11160 \height9180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\f0\b\fs28 \cf3 \cb4 \outl0\strokewidth0 \strokec3 \
+Getting Started
+\f1\b0 \
+Download the zip file below and unzip the file somewhere on your computer.\
+\pard\pardeftab720\sl320\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://d3c33hcgiwev3.cloudfront.net/jhBSUndkEemvpw5dGFfS6A_9a35e3f75f584dbfadbe106ffd64a357_1-I-Robot-Programming-Assignment-Materials.zip?Expires=1594944000&Signature=NCktnVJKRxnftx-Sf3gFEJZJKX1fvwNhgWrLKZZjJlyfoiXgb05rfqBy7tx4wBzEcqfbftYfUHBsJ5nT3wDu3p7yuk-2g~9BeNa66ygVbivBxwuI0TJPhKLfNYlK6~v7Yk0kBZ51a5YhPRkB98uctxXUtc95SebJiE3qCw5Od58_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A"}}{\fldrslt \cf5 \strokec5 1 I Robot Programming Assignment Materials.zip}}\cf5 \strokec5 \
+\cb1 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+\cf3 \cb4 \strokec3 Create a new C project named whatever you want in Visual Studio (using the Windows Desktop Wizard) or in Xcode. If you're using Visual Studio, add a main.c file to your project; if you\'92re using Xcode, Xcode automatically generates a main.c file for you.\
+Copy the contents of the main.c file from the zip file into the main.c file in your Visual Studio or Xcode project.\
+
+\f0\b Requirements
+\f1\b0 \
+The code I\'92ve provided in the main.c file reads in the name of an input file.\
+Your solution must do the following:\
+\'b7\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Read in the set of points from the input file\
+\'b7\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Calculate and save a velocity vector and a duration for moving from each point to the next point in the input file\
+\'b7\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Print out the velocity vector and duration for each move and the total duration of all the required moves on a single line as shown below. All output should be to 2 decimal places\
+For example, if the input file contains the following points:\
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3\fs33\fsmilli16940 \cf3 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f5 \cb1 \
+
+\f3 \cb4 0.33
+\f4 ,
+\f3 0.33
+\f4 ,
+\f3 0.33
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f5 \cb1 \
+
+\f2\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.08.28 PM.png \width3280 \height2440 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\fs28 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\f0\b \cf3 Important Note:
+\f1\b0 \'a0The Coursera formatting makes it look like there's a blank line between each of the lines above, but there's not. The above input file has 3 lines of text.\
+You output should be the following on a single line (be sure to include a newline at the end):\
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f3\fs33\fsmilli16940 \cf3 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.57 
+\f4 \uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,
+\f3 0.57 1.14
+\f1\fs28 \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f2\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.09.45 PM.png \width9380 \height900 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\fs28 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+\cf3 For each \'93chunk" of move information, the first 3 values are the x, y, and z components of the velocity vector (in feet per second) and the final value is the duration in seconds the welding attachment will move along that velocity vector. You need to include a comma between each of the values and all values must be to 2 decimal places. The \'93chunks\'94 of move information are separated by a single space, and when you\'92ve printed out all the move information, print a space and then the total duration of all the required moves, in seconds, also to 2 decimal places.\
+We\'92d typically label our output to tell the user what the output means, but that will just confuse the automated grader. You must print ONLY the values described above in your output, with the values appearing on a single line with a single space between them.\
+\
+
+\f0\b Additional Details
+\f1\b0 \
+The welding attachment on the robot moves at exactly 1 foot per second.\
+I guarantee that all the input files the automated grader uses have at least 2 points in them.\
+\
+
+\f0\b Helpful Hints
+\f1\b0 \
+Be sure to rewind the input file (or close it and reopen it) after counting the number of lines in the file so you can read the actual points starting at the beginning of the file.\
+Getting the x, y, and z components from a string from the points file is a lot like getting a student from the Reading a File lecture. The only tricky part for you could be getting the z component rather than getting the student's letter grade. Here's the code you can include instead of the code that gets the letter grade (assuming you named your string parameter string and your point parameter point):\
+// move past second comma and extract z\
+string = &string[0] + commaIndex + 1;\
+point->z = atof(string);\
+Note that your array of move info will be one smaller than your array of points. That's because element 0 in your move info array should be the velocity vector and duration to move from point 0 to point 1, element 1 in your move info array should be the velocity vector and duration to move from point 1 to point 2, and so on.\
+Because the speed for the welding attachment is 1 foot per second, the velocity vector is simply the unit vector from the STEM Computations Velocity lecture. In addition, the duration of the move is just the length of that vector BEFORE you normalize it.\
+A reasonable set of steps to calculate the move info between two points would be: calculate delta x, delta y, and delta z; calculate the distance between the two points (Google how to do this in 3 dimensions if you need to), save that distance as the duration of the move, and normalize the x, y, and z components of your velocity vector by dividing each component by the distance between the two points.\
+
+\f0\b Comment
+\f1\b0 \
+This is definitely a simplification of the real problem. Welding robots typical have to avoid barriers (like the roof of a car) to "reach around" to the weld point, so they can't just move the welding attachment on a straight line from point to point. In addition, to actually make everything work properly, the velocities and durations you're generating would have to be translated into commands for the actuators at the joints of the robot, something we're not doing here.\
+That's okay -- this assignment is challenging enough as it is!\
+
+\f0\b Running Your Code
+\f1\b0 \
+Because of the code I included to work with the automated grader on Coursera, when you run your program the command prompt window will open and it will sit there doing nothing. To make your code run, type in the name of an input file that you\'92ve placed in the appropriate location for your Operating System and press the <Enter> key; your code should then run so you can check your output.\
+You can actually run your code again if you want to by typing in the name of an input file that you\'92ve placed in the appropriate location for your Operating System and pressing the <Enter> key again. When you\'92re ready to stop running your code, type q (for quit).\
+Note: Don\'92t use a file name that starts with a q; that will make the code think you\'92re trying to quit.\
+Here's what running the code multiple times with different files could look like (remember, you're including a newline at the end of each of your output lines). The first line is the file name input, the second line is your output line, and so on:\
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3\fs33\fsmilli16940 \cf3 points.txt
+\f5 \cb1 \
+
+\f3 \cb4 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.57
+\f4 \uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,
+\f3 0.57 1.14\
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\fs33\fsmilli16940 \cf6 \outl0\strokewidth0 points.txt
+\f1\fs28 \cf3 \outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f3\fs33\fsmilli16940 \cf3 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.58
+\f4 ,
+\f3 0.57
+\f4 \uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,\uc0\u8722 
+\f3 0.58
+\f4 ,
+\f3 0.57
+\fs33\fsmilli16940 \cf6 \outl0\strokewidth0  1.14\
+\
+
+\fs33\fsmilli16940 \cf3 \outl0\strokewidth0 \strokec3 q\
+
+\f1\fs28 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.11.54 PM.png \width9340 \height4200 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\fs28 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\f0\b \cf3 Important Note:
+\f1\b0 \'a0The Coursera formatting makes it look like there's a blank line between each of the lines above, but there's not. The above output should be exactly 5 lines of output.\
+Xcode Users: For some reason, Xcode doesn\'92t automatically open up the Console at the bottom when I Command-R to run my project (so I have no place to type anything). To display the Console after you Command-R, select View > Debug Area > Activate Console. You should now be able to click in the right-hand pane in the Console and type as described above to run your code.\
+
+\f0\b Test Case Inputs
+\f1\b0 \
+The autograder uses the following set of test case input files to test your code (1 test case per line):\
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+\cf3 \ul \ulc3 points1.txt
+\f5\fs33\fsmilli16940 \cb1 \ulnone \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs28 \
+
+\f5\fs34\fsmilli17360 \up0 \uc0\u55349 \u57335 ,\u55349 \u57336 ,\u55349 \u57337 
+\fs33\fsmilli16940 \cb1 \up0 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0\
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\f1\fs28 \cf3 \ul \ulc3 points2.txt
+\f5\fs33\fsmilli16940 \cb1 \ulnone \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f5 \cb1 \
+
+\f3 \cb4 0.33
+\f4 ,
+\f3 0.33
+\f4 ,
+\f3 0.33
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs28 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+\cf3 \ul \ulc3 points3.txt\ulnone \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f5\fs34\fsmilli17360 \cf3 \up0 \uc0\u55349 \u57334 ,\u55349 \u57334 ,\u55349 \u57334 
+\f1 \cb1 \
+
+\f5 \cb4 \uc0\u55349 \u57334 .\u55349 \u57341 \u55349 \u57334 \u55349 \u57341 ,\u55349 \u57334 .\u55349 \u57341 \u55349 \u57334 \u55349 \u57341 ,\u55349 \u57334 
+\fs33\fsmilli16940 \cb1 \up0 \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs28 \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f5\fs34\fsmilli17360 \cf3 \up0 \uc0\u55349 \u57334 .\u55349 \u57341 \u55349 \u57334 \u55349 \u57341 ,\u55349 \u57334 .\u55349 \u57341 \u55349 \u57334 \u55349 \u57341 ,\u55349 \u57334 
+\f1 \cb1 \
+
+\f5 \cb4 \uc0\u55349 \u57334 ,\u55349 \u57334 ,\u55349 \u57334 
+\f1 \cb1 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\fs28 \cf3 \cb4 \up0 \ul \ulc3 points4.txt\ulnone \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f5\fs34\fsmilli17360 \cf3 \up0 \uc0\u55349 \u57334 ,\u55349 \u57334 ,\u55349 \u57334 
+\fs33\fsmilli16940 \cb1 \up0 \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 1.414
+\f4 ,
+\f3 0
+\f4 ,
+\f3 1.414
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs28 \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f5\fs34\fsmilli17360 \cf3 \up0 \uc0\u55349 \u57335 .\u55349 \u57338 \u55349 \u57335 \u55349 \u57338 ,\u55349 \u57334 ,\u55349 \u57335 .\u55349 \u57338 \u55349 \u57335 \u55349 \u57338 
+\fs33\fsmilli16940 \cb1 \up0 \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs28 \
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+\cf3 \ul \ulc3 points5.txt
+\f5\fs33\fsmilli16940 \cb1 \ulnone \
+\pard\pardeftab720\sl400\sa400\partightenfactor0
+
+\f3 \cf3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 2.828
+\f4 ,
+\f3 2.828
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 2.828
+\f4 ,
+\f3 2.828
+\f5 \cb1 \
+
+\f3 \cb4 0
+\f4 ,
+\f3 0
+\f4 ,
+\f3 0
+\f1\fs30 \cf2 \cb1 \outl0\strokewidth0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f2\fs24 \cf0 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.12.57 PM.png \width2940 \height11600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2020-07-15 at 12.13.23 PM.png \width3080 \height9900 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\pardeftab720\sl420\sa400\partightenfactor0
+
+\f1\fs28 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Each test case runs twice (for a total of 10 test cases), so if you're failing 2 test cases you're failing for one of the test case inputs above.\
+You should figure out what the expected results are for each test case input and make sure your code is generating those expected results in the required format before submitting your code for grading.\
+
+\f0\b Submitting Your Solution
+\f1\b0 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 Go to the programming assignment on Coursera and click My submission near the top (next to Instructions). Click the + Create submission button, click the blue button on the left, upload your main.c file, and click the Submit button. If the Honor Code popup appears, click the check box, fill in your name if necessary, and click the Continue button. Then wait patiently while the automated grader grades your assignment!\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs30 \cf2 \cb1 \outl0\strokewidth0 \
+\pard\pardeftab720\sl280\sa192\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 \
+}
