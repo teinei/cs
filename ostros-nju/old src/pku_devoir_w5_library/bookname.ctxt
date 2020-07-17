@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=bookname
+comment1.params=str\ x
+comment1.target=boolean\ isHAVE(java.lang.String[],\ java.lang.String)
+comment2.params=s
+comment2.target=void\ output(java.lang.String)
+numComments=3
