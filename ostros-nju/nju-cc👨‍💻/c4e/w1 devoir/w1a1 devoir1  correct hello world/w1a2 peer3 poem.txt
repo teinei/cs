@@ -1,0 +1,10 @@
+#include<stdio.h>
+int main()
+{
+    printf("my fav poem is:");    
+    printf(" \n on my block, a gate
+             \n on my block, a tree smelling
+             \n of citrus & jasmine that knocks
+             \n me back into the arms of my dead.\n");
+    return 0;
+}    

@@ -1,0 +1,23 @@
+/* Sine function value */
+
+#include <stdio.h>
+#include <math.h>
+/* Including the input output and math */
+int main(int argc, const char * argv[])
+/* Defining req characters */
+{
+    /* Define temporary variables */
+    double value;
+    double result;
+
+    /* Assign the value we will find the sin of */
+    value = 0.5;
+
+    /* Calculate the Sine of value */
+    result = sin(value);
+
+    /* Display the result of the calculation */
+    printf("The Sine of %f is %f\n", value, result);
+
+    return 0;
+}

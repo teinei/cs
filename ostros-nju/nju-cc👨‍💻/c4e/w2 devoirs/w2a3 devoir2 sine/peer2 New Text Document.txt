@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+  double x, n;
+  printf(" Please Enter the Value to calculate Sine :  ");
+  scanf("%lf", &n);
+x=sin(n);
+if (x < 1 && x > 0)
+	{
+		printf("sine of x is: %lf", x);
+	}
+	else
+		printf("Value is not between (0,1) \n Try again");
+  
+  
+  
+  printf("\n The Sine value of %lf = %f ", n, x);
+  
+  return 0;
+}

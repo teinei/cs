@@ -1,0 +1,17 @@
+/*
+Hello World Program
+Modified by Alexandra Nastasa, originally from C for Everyone: Programming Fundamentals course on Coursera
+May 19th, 2020
+
+Modifications: '  ' quotation marks were changed to "   "
+*/
+
+
+
+
+#include<stdio.h>
+int main(void)
+{
+	printf(" hello world\n");
+	return 0;
+}
